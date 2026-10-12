@@ -1,0 +1,108 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>Atmos — Live Weather Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <main class="app">
+    <header class="topbar">
+      <a class="logo" href="#"><span class="logo-icon">✳</span> atmos<span class="logo-dot">.</span></a>
+      <div class="live-status"><span class="live-dot"></span> LIVE WEATHER</div>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">YOUR PERSONAL WEATHER STATION</p>
+      <h1>Feel the <span>forecast.</span></h1>
+      <p class="intro-text">A little closer to the sky. Real-time weather, wherever you are.</p>
+    </section>
+
+    <form class="search-form" id="searchForm">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <label class="sr-only" for="cityInput">Search city</label>
+      <input id="cityInput" type="text" placeholder="Search any city..." maxlength="80" autocomplete="off" required>
+      <button id="searchButton" type="submit">Search <span>↗</span></button>
+    </form>
+
+    <div id="message" class="message" role="status" aria-live="polite"></div>
+
+    <section class="weather-main" aria-label="Current weather">
+      <div class="weather-heading">
+        <div>
+          <p class="section-label">CURRENT WEATHER</p>
+          <h2 id="cityName">Kurnool, India</h2>
+          <p id="localTime" class="muted">Getting local time...</p>
+        </div>
+        <button id="refreshButton" class="icon-button" type="button" title="Refresh weather" aria-label="Refresh weather">↻</button>
+      </div>
+
+      <div class="current-weather">
+        <div class="temperature-block">
+          <div class="temperature"><span id="temperature">--</span><span class="degree">°</span></div>
+          <p id="condition" class="condition">Loading weather...</p>
+          <p id="feelsLike" class="feels-like">Feels like --°C</p>
+        </div>
+        <div class="weather-art" id="weatherArt" aria-hidden="true">🌤️</div>
+      </div>
+
+      <div class="weather-divider"></div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span class="stat-icon">💧</span>
+          <span class="stat-label">Humidity</span>
+          <strong id="humidity">--%</strong>
+          <span class="stat-caption">Relative moisture</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon">💨</span>
+          <span class="stat-label">Wind speed</span>
+          <strong id="wind">-- km/h</strong>
+          <span class="stat-caption">Near the surface</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon">🌡️</span>
+          <span class="stat-label">High / Low</span>
+          <strong id="highLow">--° / --°</strong>
+          <span class="stat-caption">Today's forecast</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon">🌧️</span>
+          <span class="stat-label">Rain chance</span>
+          <strong id="rainChance">--%</strong>
+          <span class="stat-caption">Today's probability</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="forecast-section">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">PLAN AHEAD</p>
+          <h2>Next 5 days<span class="heading-dot">.</span></h2>
+        </div>
+        <span class="forecast-tag">5-DAY FORECAST</span>
+      </div>
+      <div id="forecast" class="forecast-grid">
+        <div class="forecast-placeholder">Your forecast will appear here.</div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Made for curious minds <span>✳</span></p>
+      <p>Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a></p>
+    </footer>
+  </main>
+</body>
+</html>
